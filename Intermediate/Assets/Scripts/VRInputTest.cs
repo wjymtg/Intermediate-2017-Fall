@@ -20,13 +20,17 @@ public class VRInputTest : MonoBehaviour {
         Vector2 secStick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
         if (!primStick.Equals(Vector2.zero))
         {
-            //Debug.Log("PrimaryJoystick clicked");
-            gameObject.transform.position = gameObject.transform.position + camera.transform.forward * primStick.x * WalkSpeed;
-            gameObject.transform.position = gameObject.transform.position + camera.transform.right * primStick.y * WalkSpeed;
+            Debug.Log("Prim Stick: " + primStick.ToString());
+            Vector3 forwardDir = camera.transform.forward;
+            forwardDir.z = 0;
+            Vector3 rightDir = camera.transform.right;
+            rightDir.z = 0;
+            gameObject.transform.position = gameObject.transform.position + forwardDir * primStick.y * WalkSpeed;
+            gameObject.transform.position = gameObject.transform.position + rightDir * primStick.x * WalkSpeed;
         }
         if (!secStick.Equals(Vector2.zero))
         {
-            Debug.Log("SecondaryJoystick Clicked");
+            Debug.Log("SecondaryJoystick:" + secStick.ToString());
         }
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
         {

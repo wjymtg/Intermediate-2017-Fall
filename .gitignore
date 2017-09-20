@@ -39,3 +39,5 @@ sysinfo.txt
 *.log
 
 Intermediate/Library/metadata/
+Build_Data/
+Build.exe
